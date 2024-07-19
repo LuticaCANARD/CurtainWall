@@ -31,3 +31,7 @@
 ## 특정 프로세스 실행
 
 ### 모드의 지정과 실행
+
+# 사용 기술
+- Blazor / MAUI (App)
+- .NET / C# & F# (Backend)
