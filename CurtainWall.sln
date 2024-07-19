@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurtainWall", "CurtainWall\CurtainWall.csproj", "{78C5868D-D25B-4C67-9245-EE04898B0259}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CurtainWallFSharp", "CurtainWallFSharp\CurtainWallFSharp.fsproj", "{37563ECD-E561-41FB-B1A0-BA0BB147D9B6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{78C5868D-D25B-4C67-9245-EE04898B0259}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78C5868D-D25B-4C67-9245-EE04898B0259}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78C5868D-D25B-4C67-9245-EE04898B0259}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{78C5868D-D25B-4C67-9245-EE04898B0259}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78C5868D-D25B-4C67-9245-EE04898B0259}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78C5868D-D25B-4C67-9245-EE04898B0259}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{37563ECD-E561-41FB-B1A0-BA0BB147D9B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37563ECD-E561-41FB-B1A0-BA0BB147D9B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37563ECD-E561-41FB-B1A0-BA0BB147D9B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37563ECD-E561-41FB-B1A0-BA0BB147D9B6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CF71ED01-C385-4CE9-97F3-97E81EDCF1F2}
+	EndGlobalSection
+EndGlobal
