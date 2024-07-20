@@ -1,5 +1,5 @@
 ﻿namespace ScheduleController
-#light
+#light // ; 생략을 위한 컴파일러 지시문
 
     open System
     open System.IO
@@ -44,7 +44,7 @@
             member this.UpdateSchedule() = 
                 let expired = this.GetExpiredSchdule(); 
                 let news = this.Datas |> List.filter isVaild; 
-                ignore (this.Datas = news)
+                this.Datas = news |> ignore
                 expired;
 
             new() = // 매개변수가 없는 경우 빈 리스트로 초기화.
