@@ -12,14 +12,15 @@ else
 }
 
 @code {
-	private ScheduleController.ScheduleController schedules;
+	private ScheduleController.ScheduleController schedules = new Lazy<ScheduleController.ScheduleController>(()=>new ScheduleController.ScheduleController()).Value;
 	protected override async Task OnInitializedAsync()
 	{
-		if (schedules == null)
-		{ 
+		if (schedules.IsInited == false)
+		{
 			schedules = new ScheduleController.ScheduleController(
-			
-			); 
+				await BackEnd.Data.ScheduleDatabase.Instance.GetAllSchedules()
+			);
+			schedules.SetInit();
 		}
 		
 	}

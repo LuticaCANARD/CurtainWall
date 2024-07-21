@@ -27,7 +27,9 @@
         type ScheduleController(froms:seq<Schedule>) =
 
             member this.Datas:List<Schedule> = Seq.toList froms;
-
+            member this.IsInited:bool = false;
+            member this.SetInit() = 
+                this.IsInited = true |> ignore
             // 스케쥴을 추가한다.
             member this.AddSchedule(adder:Schedule) = 
                 this.Datas = List.sortBy (fun ele -> ele.expireTime) this.Datas;

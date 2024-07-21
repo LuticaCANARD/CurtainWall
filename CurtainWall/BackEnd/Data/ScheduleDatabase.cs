@@ -15,12 +15,14 @@ namespace CurtainWall.BackEnd.Data
         {
             Init().Wait();
         }
-        async Task Init()
+        public static readonly Lazy<ScheduleDatabase> _instance = new (() => new ScheduleDatabase());
+        public static ScheduleDatabase Instance = _instance.Value;
+		async Task Init()
         {
             if (database != null)
                 return;
             database = new SQLiteAsyncConnection(Constants.DatabaseConstants.DatabasePath, Constants.DatabaseConstants.Flags);
-            var result = await database.CreateTableAsync<Schedule>();
+            await database.CreateTableAsync<Schedule>();
         }
 
         public async Task<List<Schedule>> GetAllSchedules() 
@@ -28,6 +30,9 @@ namespace CurtainWall.BackEnd.Data
             await Init();
             return await database.Table<Schedule>().ToListAsync();
         }
+
+
+
 
     }
 }
