@@ -1,5 +1,9 @@
-﻿<h3>TodoItem</h3>
-
+﻿<div>
+	<p1>@schedule.expireTime.ToString("G")</p1>
+</div>
 @code {
-
+	[Parameter]
+	public Schedule schedule { get; set; }
+	[Parameter]
+	public bool IsExpired { get; set; }
 }

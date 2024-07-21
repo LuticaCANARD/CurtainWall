@@ -1,5 +1,26 @@
 ﻿<h3>MainTodo</h3>
+@if (schedules != null)
+{
+	@foreach (Schedule schedule in schedules.GetExpiredSchdule())
+	{
+		<CurtainWall.Components.Items.TodoItem schedule="schedule" />
+	}
+} 
+else
+{
+	<h2> Now Loading... </h2>
+}
 
 @code {
-
+	private ScheduleController.ScheduleController schedules;
+	protected override async Task OnInitializedAsync()
+	{
+		if (schedules == null)
+		{ 
+			schedules = new ScheduleController.ScheduleController(
+			
+			); 
+		}
+		
+	}
 }
