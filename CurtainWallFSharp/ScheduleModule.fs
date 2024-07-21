@@ -13,7 +13,7 @@
     
     [<Class>]
     // 스케쥴을 관리하는 모듈
-    module ScheduleControllerModule =
+    module ScheduleController =
         
         // 일정이 만료되었는지 확인한다.
         let isExpired(target:Schedule) = 
