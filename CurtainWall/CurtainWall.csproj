@@ -68,7 +68,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\CurtainWallFSharp\CurtainWallFSharp.fsproj" />
+      <ProjectReference Include="..\CurtainWallFSharp\CurtainWallModel.fsproj" />
     </ItemGroup>
 
 </Project>
