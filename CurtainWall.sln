@@ -5,9 +5,7 @@ VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurtainWall", "CurtainWall\CurtainWall.csproj", "{78C5868D-D25B-4C67-9245-EE04898B0259}"
 EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "CurtainWallFSharp", "CurtainWallFSharp\CurtainWallFSharp.fsproj", "{37563ECD-E561-41FB-B1A0-BA0BB147D9B6}"
-EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "CurtainWallModel", "CurtainWallFSharp\CurtainWallModel.fsproj", "{8AD6555E-2CF9-401A-91C1-90F147EC9646}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "CurtainWallModel", "CurtainWallFSharp\CurtainWallModel.fsproj", "{37563ECD-E561-41FB-B1A0-BA0BB147D9B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +23,6 @@ Global
 		{37563ECD-E561-41FB-B1A0-BA0BB147D9B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37563ECD-E561-41FB-B1A0-BA0BB147D9B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37563ECD-E561-41FB-B1A0-BA0BB147D9B6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8AD6555E-2CF9-401A-91C1-90F147EC9646}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8AD6555E-2CF9-401A-91C1-90F147EC9646}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8AD6555E-2CF9-401A-91C1-90F147EC9646}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8AD6555E-2CF9-401A-91C1-90F147EC9646}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
