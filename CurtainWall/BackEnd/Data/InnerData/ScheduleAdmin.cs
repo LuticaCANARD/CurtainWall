@@ -11,9 +11,8 @@ namespace CurtainWall.BackEnd.Data.InnerData
 {
 	internal class ScheduleAdmin
 	{
-		public ScheduleControllerModule.ScheduleController GetAllSchedule() 
+		public static ScheduleControllerModule.ScheduleController MakeScheduleController()
 		{
-			
 			List<ScheduleTable> tab = [];
 			using (var context = new ScheduleDBContext())
 			{
