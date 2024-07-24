@@ -1,9 +1,9 @@
 ﻿@page "/todo"
 
 <h3>MainTodo</h3>
-@if (schedules != null)
+@if (controller != null)
 {
-	@foreach (Schedule schedule in schedules.GetExpiredSchdule())
+	@foreach (ISchedule schedule in controller.GetExpiredSchdule())
 	{
 		<TodoItem schedule="schedule" />
 	}
@@ -14,9 +14,13 @@ else
 }
 
 @code {
+	ScheduleController.ScheduleControllerModule.ScheduleController controller = null;
 	protected override async Task OnInitializedAsync()
 	{
-
+		if(controller == null)
+        {
+			controller = ScheduleAdmin.MakeScheduleController();
+        }
 	}
 
 }

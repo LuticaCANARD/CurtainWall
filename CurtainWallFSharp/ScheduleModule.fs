@@ -4,7 +4,7 @@
     open System
     open System.IO
     // 스케쥴을 나타내는 type
-    type ISchedule = 
+    type public ISchedule = 
         abstract member StartTime: DateTime // 일정이 시작하는 시간
         abstract member ExpireTime: DateTime // 일정이 끝나는 시간
         abstract member Name : string // 일정의 이름

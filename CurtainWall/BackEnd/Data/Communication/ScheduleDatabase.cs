@@ -1,4 +1,5 @@
 ﻿using CurtainWall.BackEnd.Data.Communication.Entity;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using ScheduleController;
 using System;
@@ -14,12 +15,18 @@ namespace CurtainWall.BackEnd.Data.Communication
 		public DbSet<ScheduleTable> Schedules { get; set; }
         public ScheduleDBContext()
         {
+			SQLitePCL.Batteries_V2.Init();
+			Database.EnsureCreated();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+			var connectionString = new SqliteConnectionStringBuilder() { 
+				DataSource = Constants.DatabaseConstants.DatabasePath,
+                Mode = (SqliteOpenMode) Constants.DatabaseConstants.Flags
+            }.ToString();
             optionsBuilder
-				.UseSqlite(Constants.DatabaseConstants.DatabasePath);
-
+            .UseSqlite(connectionString);
+            
         }
 		protected ScheduleDBContext(DbContextOptions contextOptions)
 			: base(contextOptions)
@@ -33,8 +40,7 @@ namespace CurtainWall.BackEnd.Data.Communication
 		}
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			modelBuilder.Entity<ScheduleTable>()
-				.Property(x=>x.Id).HasDefaultValue("NEXT VALUE FOR id");
+			modelBuilder.Entity<ScheduleTable>();
 		}
 	}
 }

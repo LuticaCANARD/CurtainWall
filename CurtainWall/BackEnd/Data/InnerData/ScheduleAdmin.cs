@@ -1,5 +1,6 @@
 ﻿using CurtainWall.BackEnd.Data.Communication;
 using CurtainWall.BackEnd.Data.Communication.Entity;
+using Microsoft.EntityFrameworkCore;
 using ScheduleController;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,19 @@ namespace CurtainWall.BackEnd.Data.InnerData
 			List<ScheduleTable> tab = [];
 			using (var context = new ScheduleDBContext())
 			{
-				tab = [.. context.Schedules];
+				try
+				{
+                    context.Database.OpenConnection();
+                    tab = [.. context.Schedules];
+					context.Database.CloseConnection();
+                } 
+				catch (Exception e)
+				{
+					Console.WriteLine(e.Message);
+
+				}
+
+
 			}
 			ScheduleControllerModule.ScheduleController ret = new(tab);
 			return ret;

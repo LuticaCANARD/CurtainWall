@@ -21,6 +21,7 @@ namespace CurtainWall.BackEnd.Data.Communication.Entity
 		public DateTime StartTime { get; set; }
 
 		public DateTime ExpireTime { get; set; }
+		
 
 	}
 }
