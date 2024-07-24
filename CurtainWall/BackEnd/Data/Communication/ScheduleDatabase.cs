@@ -1,5 +1,6 @@
-﻿using ScheduleController;
-using SQLite;
+﻿using CurtainWall.BackEnd.Data.Communication.Entity;
+using Microsoft.EntityFrameworkCore;
+using ScheduleController;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,31 +9,32 @@ using System.Threading.Tasks;
 
 namespace CurtainWall.BackEnd.Data.Communication
 {
-    public class ScheduleDatabase
-    {
-        SQLiteAsyncConnection database;
-        public ScheduleDatabase()
+    public class ScheduleDBContext : DbContext
+	{
+		public DbSet<ScheduleTable> Schedules { get; set; }
+        public ScheduleDBContext()
         {
-            Init().Wait();
         }
-        public static readonly Lazy<ScheduleDatabase> _instance = new(() => new ScheduleDatabase());
-        public static ScheduleDatabase Instance = _instance.Value;
-        async Task Init()
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (database != null)
-                return;
-            database = new SQLiteAsyncConnection(Constants.DatabaseConstants.DatabasePath, Constants.DatabaseConstants.Flags);
-            await database.CreateTableAsync<Schedule>();
+            optionsBuilder
+				.UseSqlite(Constants.DatabaseConstants.DatabasePath);
+
         }
+		protected ScheduleDBContext(DbContextOptions contextOptions)
+			: base(contextOptions)
+		{
 
-        public async Task<List<Schedule>> GetAllSchedules()
-        {
-            await Init();
-            return await database.Table<Schedule>().ToListAsync();
-        }
+		}
+		public ScheduleDBContext(DbContextOptions<ScheduleDBContext> contextOptions)
+			: base(contextOptions)
+		{
 
-
-
-
-    }
+		}
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			modelBuilder.Entity<ScheduleTable>()
+				.Property(x=>x.Id).HasDefaultValue("NEXT VALUE FOR id");
+		}
+	}
 }
