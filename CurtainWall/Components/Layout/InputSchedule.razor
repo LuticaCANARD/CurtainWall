@@ -1,0 +1,38 @@
+﻿@page "/inputschedule"
+
+<div>
+    <div>
+        <h1>Input Schedule</h1>
+        <form method="POST" onsubmit="OnSubmit">
+            *<div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter name" @bind="schedule.Name">
+                <input type="datetime" class="form-control" id="name" placeholder="Enter name" @bind="schedule.StartTime">
+                <input type="datetime" class="form-control" id="name" placeholder="Enter name" @bind="schedule.ExpireTime">
+            </div>
+            <button>Submit</button>
+        </form>
+    </div>
+</div>
+
+@code {
+    [SupplyParameterFromForm]
+    public SubmitSchedule schedule { get; set; }
+    protected override void OnInitialized(){
+        schedule ??= new ();
+    }
+
+    private void OnSubmit()
+    {
+        // Do something
+        //Logger.LogInformation("Id = {Id}", schedule?.Name);
+        Console.WriteLine("Id ", schedule?.Name); 
+    }
+
+    public class SubmitSchedule
+    {
+        public string Name { get; set; } = "";
+        public DateTime StartTime { get; set; } = DateTime.Now;
+        public DateTime ExpireTime { get; set; } = DateTime.Now;
+    }
+}

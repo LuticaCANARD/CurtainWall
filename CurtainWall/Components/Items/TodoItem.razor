@@ -1,5 +1,16 @@
-﻿<div>
-	<p1>@schedule.ExpireTime.ToString("G")</p1>
+﻿<div class="container">
+	@if(schedule != null)
+    {
+        <div class="col-md-8">
+            <p>@schedule.Name</p>
+            <p>@schedule.StartTime.ToString("G")</p>
+            <p>@schedule.ExpireTime.ToString("G")</p>
+        </div>
+    }
+    else
+    {
+       <span class="text-danger">Loading...</span>
+    }
 </div>
 @code {
 	[Parameter]

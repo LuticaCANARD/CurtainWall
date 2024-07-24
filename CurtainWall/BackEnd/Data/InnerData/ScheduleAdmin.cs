@@ -26,10 +26,8 @@ namespace CurtainWall.BackEnd.Data.InnerData
 				catch (Exception e)
 				{
 					Console.WriteLine(e.Message);
-
+					
 				}
-
-
 			}
 			ScheduleControllerModule.ScheduleController ret = new(tab);
 			return ret;
