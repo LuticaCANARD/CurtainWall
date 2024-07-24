@@ -49,9 +49,3 @@
 
             new() = // 매개변수가 없는 경우 빈 리스트로 초기화.
                 ScheduleController(list.Empty);
-             
-
-            
-            
-            
-    

@@ -28,6 +28,5 @@ namespace CurtainWall.BackEnd.Data
             await Init();
             return await database.Table<Schedule>().ToListAsync();
         }
-
     }
 }
