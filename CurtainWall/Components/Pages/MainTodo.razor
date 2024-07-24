@@ -1,0 +1,22 @@
+﻿@page "/todo"
+
+<h3>MainTodo</h3>
+@if (schedules != null)
+{
+	@foreach (Schedule schedule in schedules.GetExpiredSchdule())
+	{
+		<TodoItem schedule="schedule" />
+	}
+} 
+else
+{
+	<h2> Now Loading... </h2>
+}
+
+@code {
+	protected override async Task OnInitializedAsync()
+	{
+
+	}
+
+}
