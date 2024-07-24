@@ -18,10 +18,11 @@ else
 		if (schedules.IsInited == false)
 		{
 			schedules = new ScheduleController.ScheduleController(
-				await BackEnd.Data.ScheduleDatabase.Instance.GetAllSchedules()
+				await Communication.ScheduleDatabase.Instance.GetAllSchedules()
 			);
 			schedules.SetInit();
 		}
 		
 	}
+
 }

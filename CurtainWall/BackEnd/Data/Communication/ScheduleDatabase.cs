@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CurtainWall.BackEnd.Data
+namespace CurtainWall.BackEnd.Data.Communication
 {
     public class ScheduleDatabase
     {
@@ -15,9 +15,9 @@ namespace CurtainWall.BackEnd.Data
         {
             Init().Wait();
         }
-        public static readonly Lazy<ScheduleDatabase> _instance = new (() => new ScheduleDatabase());
+        public static readonly Lazy<ScheduleDatabase> _instance = new(() => new ScheduleDatabase());
         public static ScheduleDatabase Instance = _instance.Value;
-		async Task Init()
+        async Task Init()
         {
             if (database != null)
                 return;
@@ -25,7 +25,7 @@ namespace CurtainWall.BackEnd.Data
             await database.CreateTableAsync<Schedule>();
         }
 
-        public async Task<List<Schedule>> GetAllSchedules() 
+        public async Task<List<Schedule>> GetAllSchedules()
         {
             await Init();
             return await database.Table<Schedule>().ToListAsync();

@@ -71,4 +71,8 @@
       <ProjectReference Include="..\CurtainWallFSharp\CurtainWallModel.fsproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="BackEnd\Data\InnerData\" />
+    </ItemGroup>
+
 </Project>
