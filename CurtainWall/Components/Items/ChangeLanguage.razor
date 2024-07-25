@@ -1,0 +1,53 @@
+﻿@using System.Globalization
+@using Microsoft.Extensions.Localization
+@inject IJSRuntime JS
+@inject NavigationManager Navigation
+@using System.Text;
+
+<div>
+    <label>
+        Select your locale:
+        <select @bind="selectedCulture" @bind:after="ApplySelectedCultureAsync">
+            @foreach (var culture in supportedCultures)
+            {
+                <option value="@culture">@culture.DisplayName</option>
+            }
+        </select>
+        @CultureInfo.CurrentCulture.Name
+    </label>
+</div>
+@code {
+    private CultureInfo[] supportedCultures = new[]
+    {
+        new CultureInfo("ko-KR"),
+        new CultureInfo("en-US"),
+        new CultureInfo("es-CR"),
+    };
+
+    private CultureInfo? selectedCulture;
+
+    protected override void OnInitialized()
+    {
+        selectedCulture = CultureInfo.CurrentCulture;
+    }
+
+    private async Task ApplySelectedCultureAsync()
+    {
+        Debug.WriteLine("SET..."+selectedCulture?.Name);
+        if (CultureInfo.CurrentCulture != selectedCulture)
+        {
+            Debug.WriteLine("Changed..");
+            await JS.InvokeVoidAsync("blazorCulture.set", selectedCulture!.Name);
+            Thread.CurrentThread.CurrentCulture = selectedCulture!;
+            Thread.CurrentThread.CurrentUICulture = selectedCulture!;
+            CultureInfo.DefaultThreadCurrentUICulture = selectedCulture!; 
+            CultureInfo.DefaultThreadCurrentCulture = selectedCulture!;
+            StateHasChanged();
+            Preferences.Set("language", selectedCulture.Name);
+
+            
+            
+
+        }
+    }
+}

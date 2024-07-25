@@ -1,6 +1,7 @@
 ﻿using CurtainWall.BackEnd.Data.Communication;
 using Microsoft.Extensions.Logging;
 using ScheduleController;
+using Microsoft.Extensions.Localization;
 namespace CurtainWall
 {
     public static class MauiProgram
@@ -17,15 +18,17 @@ namespace CurtainWall
                 });
             // 이하 DB
             builder.Services.AddDbContext<ScheduleDBContext>();
-
-
+            
             builder.Services.AddMauiBlazorWebView();
+            builder.Services.AddBlazorBootstrap();
+
+
 #if DEBUG
             builder.Services.AddBlazorWebViewDeveloperTools();
     		builder.Logging.AddDebug();
 #endif
-
-			return builder.Build();
+            builder.Services.AddLocalization();
+            return builder.Build();
         }
     }
 }
