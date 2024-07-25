@@ -3,10 +3,17 @@
 <div>
     <div>
         <h1>Input Schedule</h1>
-        <form method="POST" onsubmit="OnSubmit">
+        <form method="POST" @onsubmit="OnSubmit">
             *<div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" id="name" placeholder="Enter name" @bind="schedule.Name">
+                <InputDate TValue="DateTime" 
+                    ValueExpression="@(()=>schedule.StartTime)" 
+                    Value="schedule.StartTime"
+                    Type="InputDateType.DateTimeLocal"
+                    ValueChanged="@((DateTime t)=> schedule.StartTime = t)"
+                    
+                />
                 <input type="datetime" class="form-control" id="name" placeholder="Enter name" @bind="schedule.StartTime">
                 <input type="datetime" class="form-control" id="name" placeholder="Enter name" @bind="schedule.ExpireTime">
             </div>
@@ -21,14 +28,17 @@
     protected override void OnInitialized(){
         schedule ??= new ();
     }
-
+    private int chchedHour = 0;
     private void OnSubmit()
     {
         // Do something
-        //Logger.LogInformation("Id = {Id}", schedule?.Name);
-        Console.WriteLine("Id ", schedule?.Name); 
-    }
+        Debug.WriteLine(schedule.Name);
 
+    }
+    private void CheckDate(DateTime selectedTime)
+    {
+        
+    }
     public class SubmitSchedule
     {
         public string Name { get; set; } = "";
