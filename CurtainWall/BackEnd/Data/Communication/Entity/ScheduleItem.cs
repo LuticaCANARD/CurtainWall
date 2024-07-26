@@ -12,7 +12,7 @@ namespace CurtainWall.BackEnd.Data.Communication.Entity
 	[ Table("tb_schedule") ]
 	[ PrimaryKey(nameof(Id)) ]
 	[ Index(nameof(StartTime)), Index(nameof(ExpireTime)) ]
-	public class ScheduleTable: ISchedule
+	public class ScheduleItem: ISchedule
 	{
 		[ Column("id") ]
 		public int Id { get; set; }

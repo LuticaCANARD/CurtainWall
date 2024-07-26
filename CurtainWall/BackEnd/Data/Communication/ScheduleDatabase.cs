@@ -12,7 +12,7 @@ namespace CurtainWall.BackEnd.Data.Communication
 {
     public class ScheduleDBContext : DbContext
 	{
-		public DbSet<ScheduleTable> Schedules { get; set; }
+		public DbSet<ScheduleItem> Schedules { get; set; }
         public ScheduleDBContext()
         {
 			SQLitePCL.Batteries_V2.Init();
@@ -40,7 +40,7 @@ namespace CurtainWall.BackEnd.Data.Communication
 		}
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			modelBuilder.Entity<ScheduleTable>();
+			modelBuilder.Entity<ScheduleItem>();
 		}
 	}
 }

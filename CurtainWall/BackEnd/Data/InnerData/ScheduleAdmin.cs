@@ -14,7 +14,7 @@ namespace CurtainWall.BackEnd.Data.InnerData
 	{
 		public static ScheduleControllerModule.ScheduleController MakeScheduleController()
 		{
-			List<ScheduleTable> tab = [];
+			List<ScheduleItem> tab = [];
 			using (var context = new ScheduleDBContext())
 			{
 				try

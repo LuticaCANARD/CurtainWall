@@ -13,6 +13,7 @@
                            Value="schedule.StartTime"
                            Type="InputDateType.Time"
                            ValueChanged="@((DateTime t)=> schedule.StartTime = t)" />
+                <InputDateTime @ref="inputDate" />
                 <input type="date" class="form-control" @bind-value="schedule.StartTime" @bind-value:format="yyyy-MM-dd" />
                 <input type="datetime" class="form-control" id="name" placeholder="Enter name" @bind="schedule.StartTime">
                 <input type="datetime" class="form-control" id="named" placeholder="Enter name" @bind="schedule.ExpireTime">
@@ -36,13 +37,14 @@
     {
         // Do something
         Debug.WriteLine(schedule.Name);
-        
+
     }
     private void CheckDate(DateTime selectedTime)
     {
-        
+
     }
-    private DateOnly dateOnly = DateOnly.FromDateTime(DateTime.Now);
+    InputDateTime inputDate;
+
     public class SubmitSchedule
     {
         public string Name { get; set; } = "";

@@ -1,5 +1,34 @@
-﻿
+﻿<div>
+    <input type="number" value="@year" @onchange="CheckVaildYear" />
+</div>
+
 @code {
+
+    private int year;
+    private int month;
+    private int day;
+
+    protected override void OnInitialized()
+    {
+
+    }
+    protected override void OnAfterRender(bool firstRender)
+    {
+
+    }
+    private void CheckVaildYear()
+    {
+        if (MaxDate == null) return;
+        if (year > MaxDate.Value.Year)
+        {
+            year = MaxDate.Value.Year;
+        }
+
+        return;
+    }
+    public DateOnly GetDateOfThisComponent() => new DateOnly(year, month, day);
+
     [Parameter]
-    public DateTime Value { get; set; }
+    public DateTime? MaxDate { get; set; }
+
 }
