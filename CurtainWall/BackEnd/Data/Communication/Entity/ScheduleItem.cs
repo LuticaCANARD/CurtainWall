@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CurtainWall.BackEnd.Data.Enum;
+using CurtainWall.BackEnd.Data.Interface;
+using Microsoft.EntityFrameworkCore;
 using ScheduleController;
 using System;
 using System.Collections.Generic;
@@ -17,11 +19,7 @@ namespace CurtainWall.BackEnd.Data.Communication.Entity
 		[ Column("id") ]
 		public int Id { get; set; }
 		public string Name { get; set; }
-
 		public DateTime StartTime { get; set; }
-
 		public DateTime ExpireTime { get; set; }
-		
-
 	}
 }

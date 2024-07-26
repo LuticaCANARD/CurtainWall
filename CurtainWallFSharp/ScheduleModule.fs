@@ -25,7 +25,7 @@
         // 스케쥴을 관리해주는 type
         type ScheduleController(froms:seq<ISchedule>) =
 
-            member this.Datas:List<ISchedule> = Seq.toList froms;
+            member public this.Datas:List<ISchedule> = Seq.toList froms;
             member this.IsInited:bool = false;
             member this.SetInit() = 
                 this.IsInited = true |> ignore
