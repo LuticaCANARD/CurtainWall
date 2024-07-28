@@ -1,5 +1,84 @@
-﻿
+﻿<div class="input-group">
+    <input type="number" value="@year" @onchange="CheckVaildYear" />
+    <input type="number" value="@month" @onchange="CheckVaildMonth" />
+    <input type="number" value="@day" @onchange="@((nd)=>{
+        CheckVaildDay( (int) (nd.Value ?? '0'));
+    })"/>
+</div>
+
 @code {
+
+    private int year;
+    private int month;
+    private int day;
+
+    protected override void OnInitialized()
+    {
+
+    }
+    protected override void OnAfterRender(bool firstRender)
+    {
+
+    }
+    private void CheckVaildDay(int a)
+    {
+        CheckVaildMonth();
+        if(a > DateTime.DaysInMonth(year, month))
+        {
+            a = 1;
+        }
+        else if(a < 1)
+        {
+            month--;
+            CheckVaildMonth();
+            a = DateTime.DaysInMonth(year, month);
+        }
+
+        if (MaxDate != null && year == MaxDate.Value.Year && month == MaxDate.Value.Month && a > MaxDate.Value.Day)
+        {
+            a = MaxDate.Value.Day;
+        }
+        day = a;
+    }
+    private void CheckVaildMonth()
+    {
+        if(month > 12)
+        {
+            CheckVaildYear();
+            year++;
+            month = 12;
+        }
+        else if(month < 1)
+        {
+            CheckVaildYear();
+            year--;
+            month = 12;
+		}
+
+        if(MaxDate != null && year == MaxDate.Value.Year && month > MaxDate.Value.Month)
+		{
+			month = MaxDate.Value.Month;
+		}
+    }
+
+    private void CheckVaildYear()
+    {
+        if(year < 1)
+		{
+			year = 1;
+		}
+        if (MaxDate == null) 
+            return;
+        if (year > MaxDate.Value.Year)
+        {
+            year = MaxDate.Value.Year;
+        }
+
+        return;
+    }
+    public DateOnly GetDateOfThisComponent() => new DateOnly(year, month, day);
+
     [Parameter]
-    public DateTime Value { get; set; }
+    public DateTime? MaxDate { get; set; } = null;
+
 }
