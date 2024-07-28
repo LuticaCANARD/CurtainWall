@@ -49,5 +49,16 @@
                 this.Datas = news |> ignore
                 expired;
 
+            (*
+                유효한 모든 스케쥴을 반환한다.
+                includeAll이 true인 경우 만료된 스케쥴도 반환한다.
+            *)
+            member this.GetSchedule(includeAll:bool) = 
+                if(includeAll = true) then
+                    this.Datas
+                else
+                    this.Datas |> List.filter isVaild;
+
+
             new() = // 매개변수가 없는 경우 빈 리스트로 초기화.
                 ScheduleController(list.Empty);

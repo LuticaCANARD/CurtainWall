@@ -4,7 +4,7 @@
     <div>
         <h1>Input Schedule</h1>
         <form method="POST" @onsubmit="OnSubmit">
-            *<div class="form-group">
+            <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" id="name" placeholder="Enter name" @bind="schedule.Name">
                 <InputDateTime @ref="_inputDate" />

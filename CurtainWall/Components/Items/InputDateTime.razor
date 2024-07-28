@@ -1,9 +1,7 @@
 ﻿<div class="input-group">
-    <input type="number" value="@year" @onchange="CheckVaildYear" />
-    <input type="number" value="@month" @onchange="CheckVaildMonth" />
-    <input type="number" value="@day" @onchange="@((nd)=>{
-        CheckVaildDay( (int) (nd.Value ?? '0'));
-    })"/>
+    <input type="number" value="@year" @onchange="@((ny)=>{CheckVaildYear((int)(ny.Value ?? '0'));})" />
+    <input type="number" value="@month" @onchange="@((nm)=>{CheckVaildMonth((int) (nm.Value ?? '0'));})" />
+    <input type="number" value="@day" @onchange="@((nd)=>{CheckVaildDay((int) (nd.Value ?? '0'));})"/>
 </div>
 
 @code {
@@ -22,7 +20,7 @@
     }
     private void CheckVaildDay(int a)
     {
-        CheckVaildMonth();
+        CheckVaildMonth(month);
         if(a > DateTime.DaysInMonth(year, month))
         {
             a = 1;
@@ -30,7 +28,7 @@
         else if(a < 1)
         {
             month--;
-            CheckVaildMonth();
+            CheckVaildMonth(month);
             a = DateTime.DaysInMonth(year, month);
         }
 
@@ -40,29 +38,31 @@
         }
         day = a;
     }
-    private void CheckVaildMonth()
+    private void CheckVaildMonth(int mm)
     {
-        if(month > 12)
+        if(mm > 12)
         {
-            CheckVaildYear();
+            CheckVaildYear(year);
             year++;
-            month = 12;
+            mm = 12;
         }
-        else if(month < 1)
+        else if(mm < 1)
         {
-            CheckVaildYear();
+            CheckVaildYear(year);
             year--;
-            month = 12;
+            mm = 12;
 		}
 
         if(MaxDate != null && year == MaxDate.Value.Year && month > MaxDate.Value.Month)
 		{
-			month = MaxDate.Value.Month;
+			mm = MaxDate.Value.Month;
 		}
+        month = mm;
     }
 
-    private void CheckVaildYear()
+    private void CheckVaildYear(int ny)
     {
+        year = ny;
         if(year < 1)
 		{
 			year = 1;
