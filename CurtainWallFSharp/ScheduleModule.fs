@@ -1,4 +1,8 @@
-﻿namespace ScheduleController
+﻿(*
+    이 모듈에는 데이터를 담당하는 부분만 수록한다.
+    DB와 연동되는 부분, 데이터를 읽고 쓰는 부분은 이 모듈을 상속하여 구현한다.
+*)
+namespace ScheduleController
 #light // ; 생략을 위한 컴파일러 지시문
 
     open System
